@@ -16,7 +16,7 @@ public class AtmWindow extends JFrame implements Presentable {
     JTextArea input;
 
     public AtmWindow(OperationManager controller) {
-        setSize(800, 800);
+        setSize(500, 800);
         setTitle("ATM");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         JPanel mainWindow = new JPanel();
@@ -161,43 +161,77 @@ public class AtmWindow extends JFrame implements Presentable {
     @Override
     public void showScreen(String msg, boolean clear) {
         System.err.println(msg);
-        StringBuilder str = new StringBuilder("=================================================\n");
-        for (int i = 1; i < (50 - msg.length()) / 2 - 1; i++) {
+        StringBuilder str = new StringBuilder("======================================================================\n");
+        for (int i = 1; i < (70 - msg.length()) / 2 - 1; i++) {
             str.append('=');
         }
         str.append(' ' + msg.toUpperCase() + ' ');
-        for (int i = (50 - msg.length()) / 2 + msg.length() + 1; i < 50; i++) {
+        for (int i = (70 - msg.length()) / 2 + msg.length() + 1; i < 70; i++) {
             str.append('=');
         }
         str.append("\n");
-        str.append("=================================================\n");
+        str.append("======================================================================\n");
         if(clear) {
             screen.setText(str.toString());
         } else {
             screen.append(str.toString());
         }
-//        screen.setForeground(Color.black);
+    }
+
+    public void showScreen(String msg, String description) {
+        System.err.println(msg);
+        StringBuilder str = new StringBuilder("======================================================================\n");
+        for (int i = 1; i < (70 - msg.length()) / 2 - 1; i++) {
+            str.append('=');
+        }
+        str.append(' ' + msg.toUpperCase() + ' ');
+        for (int i = (70 - msg.length()) / 2 + msg.length() + 1; i < 70; i++) {
+            str.append('=');
+        }
+        str.append("\n");
+        str.append("======================================================================\n");
+        str.append(description);
+        screen.setText(str.toString());
+    }
+
+    public void showScreen(String msg, String description, boolean clear) {
+        System.err.println(msg);
+        StringBuilder str = new StringBuilder("======================================================================\n");
+        for (int i = 1; i < (70 - msg.length()) / 2 - 1; i++) {
+            str.append('=');
+        }
+        str.append(' ' + msg.toUpperCase() + ' ');
+        for (int i = (70 - msg.length()) / 2 + msg.length() + 1; i < 70; i++) {
+            str.append('=');
+        }
+        str.append("\n");
+        str.append("======================================================================\n");
+        str.append(description);
+        if(clear) {
+            screen.setText(str.toString());
+        } else {
+            screen.append(str.toString());
+        }
     }
 
     @Override
     public void showError(String msg, boolean clear) {
         System.err.println(msg);
-        StringBuilder str = new StringBuilder("=================================================\n");
-        for (int i = 1; i < (50 - msg.length()) / 2 - 1; i++) {
+        StringBuilder str = new StringBuilder("======================================================================\n");
+        for (int i = 1; i < (70 - msg.length()) / 2 - 1; i++) {
             str.append('=');
         }
         str.append(' ' + msg.toUpperCase() + ' ');
-        for (int i = (50 - msg.length()) / 2 + msg.length() + 1; i < 50; i++) {
+        for (int i = (70 - msg.length()) / 2 + msg.length() + 1; i < 70; i++) {
             str.append('=');
         }
         str.append("\n");
-        str.append("=================================================\n");
+        str.append("======================================================================\n");
         if(clear) {
             screen.setText(str.toString());
         } else {
             screen.append(str.toString());
         }
-//        screen.setForeground(Color.RED);
     }
 
     public void addToScreen(String str) {
@@ -205,6 +239,10 @@ public class AtmWindow extends JFrame implements Presentable {
     }
 
     public String getInput() {
-        return screen.getText();
+        return input.getText();
+    }
+
+    public void clearInput() {
+        input.setText("");
     }
 }

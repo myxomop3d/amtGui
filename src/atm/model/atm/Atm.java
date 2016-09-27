@@ -36,47 +36,19 @@ public void getUserInfo() throws IOException, ClassNotFoundException {
     }
 
 
-    public void withdraw() {
-//        IOController.showMsg("ВВЕДИТЕ СУММУ");
-        try {
-            currentUser.withdraw(IOController.inputPositiveInt());
-        } catch (UserException e) {
-//            IOController.showMsg("Недостаточно средств");
-        } catch (Exception e) {
-//            IOController.showMsg("Ошибка запроса", "Допустимые символы для ввода : только цыфры\nСумма не может быть отрицательной");
-        }
-    }
-
-    public void showBalance() {
-//        IOController.showMsg("Ваш баланс: " + currentUser.getBalance());
+    public void withdraw(int amount) throws UserException {
+            currentUser.withdraw(amount);
     }
 
 
-//    public boolean verifyPin() {
-//        Scanner sc = new Scanner(System.in);
-//        IOController.showMsg("ВВЕДИТЕ PIN");
-//
-//        int inputPin;
-//
-//        if(sc.hasNextInt()) {
-//            inputPin = sc.nextInt();
-//            if(currentUser.isCorrectPin(inputPin)) {
-//                return true;
-//            } else {
-//                IOController.showMsg("Ошибка ввода PIN", "Неверный Pin.");
-//                return false;
-//            }
-//        } else {
-//            IOController.showMsg("Ошибка ввода PIN", "Вы ввели не целое число");
-//            return false;
-//        }
-//    }
+    public int getBalance() {
+        return currentUser.getBalance();
+    }
+
     public boolean verifyPin(int pin) {
-
         if(currentUser.isCorrectPin(pin)) {
             return true;
         } else {
-//            IOController.showMsg("Ошибка ввода PIN", "Неверный Pin.");
             return false;
         }
     }
@@ -86,38 +58,38 @@ public void getUserInfo() throws IOException, ClassNotFoundException {
         return currentUser.getLastName() + " " + currentUser.getFirstName();
     }
 
-    public void changePin() {
-        Scanner sc = new Scanner(System.in);
-//        IOController.showMsg("ВВЕДИТЕ СТАРЫЙ PIN");
-
-        int inputPin;
-
-        if(sc.hasNextInt()) {
-            inputPin = sc.nextInt();
-            if(inputPin >= 1000 && inputPin <= 9999 && currentUser.isCorrectPin(inputPin)) {
-//                IOController.showMsg("ВВЕДИТЕ НОВЫЙ PIN");
-
-                if(sc.hasNextInt()) {
-                    int newPin = sc.nextInt();
-                    if(newPin >= 1000 && newPin <= 9999) {
-                        currentUser.setPinCode(newPin);
-//                        IOController.showMsg("PIN СОХРАНЁН");
-                    } else if (newPin < 1000) {
-//                        IOController.showMsg("Ошибка ввода PIN", "Pin не может начитаться с \"0\"");
-                    } else {
-
-//                        IOController.showMsg("Ошибка ввода PIN", "Pin должен состоять из 4-х цифр. Первая цифра не может быть \"0\"");
-                    }
-                } else {
-//                    IOController.showMsg("Ошибка ввода PIN", "Вы ввели не целое число");
-                }
-            } else {
-//                IOController.showMsg("Ошибка ввода PIN", "Неверный Pin.");
-                ejectCard();
-            }
-        } else {
-//            IOController.showMsg("Ошибка ввода PIN", "Вы ввели не целое число");
-        }
-    }
+//    public void changePin() {
+//        Scanner sc = new Scanner(System.in);
+////        IOController.showMsg("ВВЕДИТЕ СТАРЫЙ PIN");
+//
+//        int inputPin;
+//
+//        if(sc.hasNextInt()) {
+//            inputPin = sc.nextInt();
+//            if(inputPin >= 1000 && inputPin <= 9999 && currentUser.isCorrectPin(inputPin)) {
+////                IOController.showMsg("ВВЕДИТЕ НОВЫЙ PIN");
+//
+//                if(sc.hasNextInt()) {
+//                    int newPin = sc.nextInt();
+//                    if(newPin >= 1000 && newPin <= 9999) {
+//                        currentUser.setPinCode(newPin);
+////                        IOController.showMsg("PIN СОХРАНЁН");
+//                    } else if (newPin < 1000) {
+////                        IOController.showMsg("Ошибка ввода PIN", "Pin не может начитаться с \"0\"");
+//                    } else {
+//
+////                        IOController.showMsg("Ошибка ввода PIN", "Pin должен состоять из 4-х цифр. Первая цифра не может быть \"0\"");
+//                    }
+//                } else {
+////                    IOController.showMsg("Ошибка ввода PIN", "Вы ввели не целое число");
+//                }
+//            } else {
+////                IOController.showMsg("Ошибка ввода PIN", "Неверный Pin.");
+//                ejectCard();
+//            }
+//        } else {
+////            IOController.showMsg("Ошибка ввода PIN", "Вы ввели не целое число");
+//        }
+//    }
 
 }

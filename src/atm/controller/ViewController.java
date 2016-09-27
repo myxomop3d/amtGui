@@ -19,11 +19,33 @@ public class ViewController {
                 view = new AtmWindow(manager);
             }
         });
-//        view = new AtmWindow(manager);
+        showMsg("Добро пожаловать", "Для работы ставьте карточку", true);
+        clearInput();
     }
 
-    private String getInput() {
+    protected String getInput() {
+        System.err.println(view.getInput());
         return view.getInput();
+    }
+
+    protected void clearInput() {
+        view.clearInput();
+    }
+
+    protected void showMsg(String msg) {
+        view.showScreen(msg, true);
+    }
+
+    protected void showMsg(String msg, boolean clear) {
+        view.showScreen(msg, clear);
+    }
+
+    protected void showMsg(String msg, String description) {
+        view.showScreen(msg, description);
+    }
+
+    protected void showMsg(String msg, String description, boolean clear) {
+        view.showScreen(msg, description, clear);
     }
 
 }
