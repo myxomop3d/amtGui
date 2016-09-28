@@ -32,7 +32,13 @@ public class AtmWindow extends JFrame implements Presentable {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                controller.insertCard();
-                controller.cardBtn();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        controller.cardBtn();
+                    }
+                }).start();
+//                controller.cardBtn();
             }
         });
         mainWindow.add(cardBtn);
@@ -125,15 +131,22 @@ public class AtmWindow extends JFrame implements Presentable {
             public void actionPerformed(ActionEvent e) {
                 if(input.getText().length() > 0){
                     input.setText(input.getText().substring(0,input.getText().length()-1));
-                } else {
-                    controller.backBtn();
                 }
+//                else {
+//                    controller.backBtn();
+//                }
             }
         });
         btnOk.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.okBtn();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        controller.okBtn();
+                    }
+                }).start();
+//                controller.okBtn();
             }
         });
 
